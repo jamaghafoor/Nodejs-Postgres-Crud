@@ -2,6 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import pool from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import errorHandler from "./middlewares/errorHandling.js";
+
 dotenv.config();
 
 const app = express();
@@ -12,12 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
+app.use("/api/users", userRoutes);
 
 //Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ error: "Internal server error" });
-});
+app.use(errorHandler);
 
 //BASE URL
 app.get("/", async (req, res) => {
