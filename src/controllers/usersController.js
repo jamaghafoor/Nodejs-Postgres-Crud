@@ -1,11 +1,11 @@
-import { handleResponse } from "../middlewares/responseHandler";
+import { handleResponse } from "../middlewares/responseHandler.js";
 import {
   createNewUserService,
   deleteUserService,
   getAllUsersService,
   getUserByIdService,
   updateUserService,
-} from "../models/userModels";
+} from "../models/userModels.js";
 
 export const getAllUserController = async (req, res, next) => {
   try {

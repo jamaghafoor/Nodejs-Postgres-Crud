@@ -4,6 +4,7 @@ import cors from "cors";
 import pool from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middlewares/errorHandling.js";
+import { createUsersTable } from "./data/createUserTable.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use("/api/users", userRoutes);
 
 //Error handling middleware
 app.use(errorHandler);
+createUsersTable();
 
 //BASE URL
 app.get("/", async (req, res) => {

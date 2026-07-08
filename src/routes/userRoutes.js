@@ -6,12 +6,13 @@ import {
   createUserController,
   updateUserController,
   deleteUserController,
-} from "../controllers/usersController";
+} from "../controllers/usersController.js";
+import { validateUserInput } from "../middlewares/validateUserSchema.js";
 
 router.get("/", getAllUserController);
 router.get("/:id", getUserByIdController);
-router.post("/", createUserController);
-router.put("/:id", updateUserController);
+router.post("/", validateUserInput, createUserController);
+router.put("/:id", validateUserInput, updateUserController);
 router.delete("/:id", deleteUserController);
 
 export default router;
