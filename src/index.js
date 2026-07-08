@@ -31,7 +31,11 @@ app.get("/", async (req, res) => {
   });
 });
 
-// Start Server
-app.listen(process.env.PORT || 5000, async () => {
-  console.log(`Server is running on port ${process.env.PORT || 5000}`);
-});
+// Start Server only if not in production (Vercel Serverless environment)
+if (process.env.NODE_ENV !== "production") {
+  app.listen(process.env.PORT || 5000, async () => {
+    console.log(`Server is running on port ${process.env.PORT || 5000}`);
+  });
+}
+
+export default app;
