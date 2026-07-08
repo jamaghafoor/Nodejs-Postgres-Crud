@@ -5,6 +5,7 @@ import pool from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middlewares/errorHandling.js";
 import { createUsersTable } from "./data/createUserTable.js";
+import { buildHomeHtml } from "./utils/buildHomeHtml.js";
 
 dotenv.config();
 
@@ -25,10 +26,10 @@ createUsersTable();
 //BASE URL
 app.get("/", async (req, res) => {
   const result = await pool.query("SELECT current_database()");
-  res.json({
-    message: "API is running",
-    database: result.rows[0].current_database,
-  });
+  const databaseName = result.rows[0].current_database;
+
+  const html = buildHomeHtml(databaseName);
+  res.send(html);
 });
 
 // Start Server only if not in production (Vercel Serverless environment)
