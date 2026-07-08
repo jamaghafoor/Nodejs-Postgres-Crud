@@ -5,7 +5,7 @@ export const buildHomeHtml = (databaseName) => {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node.js Postgres API</title>
+    <title>Node.js & Supabase Postgres API</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
       
@@ -164,10 +164,10 @@ export const buildHomeHtml = (databaseName) => {
   <body>
     <div class="container">
       <header>
-        <h1>Node.js Postgres API</h1>
+        <h1>Node.js & Supabase API</h1>
         <p class="subtitle">Fast, secure, and ready for production.</p>
         <div class="status">
-          API is Online & Connected to ${databaseName}
+          API is Online & Connected to Supabase DB: ${databaseName}
         </div>
       </header>
       
@@ -206,7 +206,7 @@ export const buildHomeHtml = (databaseName) => {
       </div>
       
       <footer>
-        &copy; ${new Date().getFullYear()} Node.js Postgres CRUD API. Deployed on Vercel.
+        &copy; ${new Date().getFullYear()} Node.js Postgres CRUD API. Powered by Supabase & Deployed on Vercel.
       </footer>
     </div>
   </body>

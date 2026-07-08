@@ -11,7 +11,10 @@ const pool = new Pool({
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-  connectionString: process.env.DATABASE_PUBLIC_URL || process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // Required for Supabase connection
+  },
 });
 
 pool.on("connect", () => {
